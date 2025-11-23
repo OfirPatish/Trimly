@@ -1,0 +1,256 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-foreground: var(--brand-accent-foreground);
+  --color-brand-muted-bg: var(--brand-muted-bg);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Light Theme - Clean, modern palette matching the design */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0.15 0 0); /* Pure black */
+  --card: oklch(1 0 0); /* White cards */
+  --card-foreground: oklch(0.15 0 0); /* Black text on cards */
+  --popover: oklch(1 0 0); /* White popovers */
+  --popover-foreground: oklch(0.15 0 0); /* Black text on popovers */
+
+  /* Primary - Black for primary actions */
+  --primary: oklch(0.15 0 0); /* Pure black */
+  --primary-foreground: oklch(1 0 0); /* White text on primary */
+
+  /* Secondary - Light gray for secondary elements */
+  --secondary: oklch(0.96 0 0); /* Very light gray */
+  --secondary-foreground: oklch(0.15 0 0); /* Black text on secondary */
+
+  /* Muted - Subtle gray for muted backgrounds */
+  --muted: oklch(0.96 0 0); /* Very light gray */
+  --muted-foreground: oklch(0.5 0 0); /* Medium gray text */
+
+  /* Accent - Slightly darker gray for accents */
+  --accent: oklch(0.94 0 0); /* Light gray */
+  --accent-foreground: oklch(0.15 0 0); /* Black text on accent */
+
+  /* Destructive - Red for errors/destructive actions */
+  --destructive: oklch(0.65 0.22 15);
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
+
+  /* Borders and inputs */
+  --border: oklch(0.9 0 0); /* Light gray borders */
+  --input: oklch(0.98 0 0); /* Very light gray inputs */
+  --ring: oklch(0.15 0 0); /* Black focus ring */
+
+  /* Semantic Colors - Success, Warning, Info */
+  --success: oklch(0.65 0.18 150);
+  --success-foreground: oklch(1 0 0); /* White text on success */
+  --success-muted: color-mix(in oklch, var(--success) 10%, transparent);
+
+  --warning: oklch(0.75 0.18 85);
+  --warning-foreground: oklch(0.15 0 0); /* Black text on warning */
+  --warning-muted: color-mix(in oklch, var(--warning) 10%, transparent);
+
+  --info: oklch(0.65 0.18 220);
+  --info-foreground: oklch(1 0 0); /* White text on info */
+  --info-muted: color-mix(in oklch, var(--info) 10%, transparent);
+
+  /* Custom Brand Colors */
+  --brand-accent: oklch(0.82 0.05 75); /* #DEC7A6 - Beige accent */
+  --brand-accent-foreground: oklch(0.15 0 0); /* Dark text on accent */
+  --brand-muted-bg: oklch(0.97 0.01 75); /* #F8F5EF - Light beige background */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: contain;
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+    /* Prevent text size adjustment on iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Safe area insets for notched devices */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+    /* Smooth scroll with navbar offset */
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Prevent text selection on UI elements for app-like feel */
+    -webkit-tap-highlight-color: transparent;
+    /* Better font rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent overscroll bounce on iOS */
+    overscroll-behavior-y: none;
+    /* Safe area insets */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Mobile app-like touch targets - minimum 44x44px */
+  button:not([data-slot="checkbox"]),
+  a,
+  [role="button"]:not([data-slot="checkbox"]),
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Prevent text selection on buttons for app-like feel */
+  button,
+  [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Allow text selection in content areas */
+  p,
+  span,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* Better input styling on mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    touch-action: manipulation;
+  }
+
+  /* Smooth transitions and prevent tap highlight for app-like feel */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better scrolling on mobile */
+  @media (max-width: 768px) {
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Mobile-optimized containers */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  @media (max-width: 768px) {
+    body {
+      overflow-x: hidden;
+    }
+
+    * {
+      max-width: 100%;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  /* PWA-specific optimizations */
+
+  /* Improve touch responsiveness */
+  @media (hover: none) and (pointer: coarse) {
+    button:not([data-slot="checkbox"]),
+    a,
+    [role="button"]:not([data-slot="checkbox"]) {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+
+  /* Prevent text inflation on iOS */
+  @media screen and (max-width: 768px) {
+    body {
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+  }
+
+  /* Optimize for notched devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+    }
+  }
+
+  /* Optimize backdrop blur for mobile performance */
+  @supports (backdrop-filter: blur(10px)) or
+    (-webkit-backdrop-filter: blur(10px)) {
+    .backdrop-blur-sm,
+    .backdrop-blur-md {
+      will-change: backdrop-filter;
+    }
+  }
+}
