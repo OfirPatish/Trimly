@@ -7,11 +7,15 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "build:prod": "npm install --include=dev && npm run prisma:generate && npm run build && npm run prisma:migrate:deploy",
+    "build:prod": "npm install --include=dev && npm run prisma:generate && npm run build && npm run prisma:migrate:deploy && npm run prisma:seed",
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:migrate:deploy": "prisma migrate deploy"
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "keywords": [
     "barber",

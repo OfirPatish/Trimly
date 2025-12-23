@@ -23,8 +23,29 @@ RESTful API built with Node.js, Express, and TypeScript for managing barber appo
    ```bash
    npm run prisma:generate
    npm run prisma:migrate
+   npm run prisma:seed
    ```
 4. Run development server: `npm run dev`
+
+## 🌱 Database Seeding
+
+The project includes a seed script that automatically creates dummy data when the database is initialized:
+
+- **Dummy Barber:** A demo barber account with pre-configured schedules
+- **Services:** 5 pre-defined services (Classic Haircut, Fade Haircut, Beard Trim, etc.)
+- **Schedules:** 4 weeks of Monday-Friday schedules (9 AM - 5 PM) plus 2 weeks of Saturday schedules (10 AM - 3 PM)
+
+The seed script runs automatically during production builds (`build:prod` script) after migrations. You can also run it manually:
+
+```bash
+npm run prisma:seed
+```
+
+**Dummy Barber Credentials:**
+- Email: `demo.barber@trimly.com`
+- Password: `DemoBarber123`
+
+The seed script is idempotent - it will skip creating data that already exists, so it's safe to run multiple times.
 
 ## 📡 API Endpoints
 
