@@ -31,6 +31,7 @@ RESTful API built with Node.js, Express, and TypeScript for managing barber appo
 
 The project includes a seed script that automatically creates dummy data when the database is initialized:
 
+- **Dummy Customer:** A demo customer account for testing customer features
 - **Dummy Barber:** A demo barber account with pre-configured schedules
 - **Services:** 5 pre-defined services (Classic Haircut, Fade Haircut, Beard Trim, etc.)
 - **Schedules:** 4 weeks of Monday-Friday schedules (9 AM - 5 PM) plus 2 weeks of Saturday schedules (10 AM - 3 PM)
@@ -41,7 +42,15 @@ The seed script runs automatically during production builds (`build:prod` script
 npm run prisma:seed
 ```
 
-**Dummy Barber Credentials:**
+**Demo Account Credentials:**
+
+**Customer:**
+
+- Email: `demo.customer@trimly.com`
+- Password: `DemoCustomer123`
+
+**Barber:**
+
 - Email: `demo.barber@trimly.com`
 - Password: `DemoBarber123`
 
@@ -50,17 +59,20 @@ The seed script is idempotent - it will skip creating data that already exists, 
 ## 📡 API Endpoints
 
 ### Authentication (`/api/auth`)
+
 - `POST /register` - Register new user
 - `POST /login` - Login and get JWT token
 - `GET /me` - Get current authenticated user
 
 ### Appointments (`/api/appointments`)
+
 - `GET /` - Get all appointments for authenticated user
 - `POST /` - Create new appointment (with validation)
 - `DELETE /:id` - Cancel appointment (1-hour advance notice required)
 - `GET /availability` - Get available time slots
 
 ### Barbers (`/api/barbers`)
+
 - `GET /` - Get list of all barbers
 - `GET /appointments` - Get barber's appointments
 - `GET /schedule/:date` - Get barber's schedule
@@ -69,6 +81,7 @@ The seed script is idempotent - it will skip creating data that already exists, 
 - `DELETE /schedule/:id` - Delete schedule entry
 
 ### Services (`/api/services`)
+
 - `GET /` - Get all active services
 - `POST /` - Create new service (barber only)
 - `PATCH /:id` - Update service (barber only)

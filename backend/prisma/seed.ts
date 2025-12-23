@@ -5,6 +5,8 @@ const prisma = new PrismaClient();
 
 const DUMMY_BARBER_EMAIL = "demo.barber@trimly.com";
 const DUMMY_BARBER_PASSWORD = "DemoBarber123";
+const DUMMY_CUSTOMER_EMAIL = "demo.customer@trimly.com";
+const DUMMY_CUSTOMER_PASSWORD = "DemoCustomer123";
 
 async function main() {
   console.log("🌱 Starting database seeding...");
@@ -32,6 +34,31 @@ async function main() {
     });
 
     console.log(`✅ Created dummy barber: ${barber.name} (${barber.email})`);
+  }
+
+  // Check if dummy customer already exists
+  let customer = await prisma.user.findUnique({
+    where: { email: DUMMY_CUSTOMER_EMAIL },
+  });
+
+  if (customer) {
+    console.log("✅ Dummy customer already exists, using existing customer...");
+  } else {
+    // Hash password for dummy customer
+    const passwordHash = await bcrypt.hash(DUMMY_CUSTOMER_PASSWORD, 10);
+
+    // Create dummy customer
+    customer = await prisma.user.create({
+      data: {
+        email: DUMMY_CUSTOMER_EMAIL,
+        passwordHash,
+        name: "Demo Customer",
+        phone: "+1234567891",
+        role: "customer",
+      },
+    });
+
+    console.log(`✅ Created dummy customer: ${customer.name} (${customer.email})`);
   }
 
   // Create services (skip if they already exist)
@@ -158,6 +185,9 @@ async function main() {
   console.log(`\n📝 Dummy barber credentials:`);
   console.log(`   Email: ${DUMMY_BARBER_EMAIL}`);
   console.log(`   Password: ${DUMMY_BARBER_PASSWORD}`);
+  console.log(`\n📝 Dummy customer credentials:`);
+  console.log(`   Email: ${DUMMY_CUSTOMER_EMAIL}`);
+  console.log(`   Password: ${DUMMY_CUSTOMER_PASSWORD}`);
 }
 
 main()

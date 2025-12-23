@@ -4,7 +4,10 @@ A full-stack web application for managing barber shop appointments with separate
 
 **🌐 Live Demo:** [https://trimly-frontend.onrender.com](https://trimly-frontend.onrender.com)
 
-**🧪 Demo Account:** `test@gmail.com` / `123456`
+**🧪 Demo Accounts:**
+
+- **Customer:** `demo.customer@trimly.com` / `DemoCustomer123`
+- **Barber:** `demo.barber@trimly.com` / `DemoBarber123`
 
 ## 🚀 Tech Stack
 
@@ -24,10 +27,12 @@ A full-stack web application for managing barber shop appointments with separate
 ## 🏃 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - PostgreSQL database
 
 ### Backend Setup
+
 ```bash
 cd backend
 npm install
@@ -38,6 +43,7 @@ npm run dev
 ```
 
 ### Frontend Setup
+
 ```bash
 cd frontend
 npm install
