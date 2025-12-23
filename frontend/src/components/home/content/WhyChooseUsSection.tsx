@@ -52,8 +52,8 @@ export function WhyChooseUsSection() {
             Why Choose Us
           </h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto text-muted-foreground">
-            Experience the difference of professional barber shop service
-            with unmatched convenience and quality.
+            Experience the difference of professional barber shop service with
+            unmatched convenience and quality.
           </p>
         </div>
 
@@ -95,4 +95,3 @@ export function WhyChooseUsSection() {
     </section>
   );
 }
-

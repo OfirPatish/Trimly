@@ -58,8 +58,8 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-background/90 font-medium max-w-2xl leading-relaxed">
-            Book your appointment online. Visit our barber shop for a
-            premium grooming experience.
+            Book your appointment online. Visit our barber shop for a premium
+            grooming experience.
           </p>
 
           {/* CTA Buttons */}

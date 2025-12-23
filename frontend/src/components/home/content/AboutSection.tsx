@@ -34,9 +34,9 @@ export function AboutSection() {
             </div>
 
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-xl">
-              Experience premium grooming at our barber shop. Our
-              licensed barbers provide professional service,
-              ensuring convenience and quality in every appointment.
+              Experience premium grooming at our barber shop. Our licensed
+              barbers provide professional service, ensuring convenience and
+              quality in every appointment.
             </p>
 
             {/* Stats */}
