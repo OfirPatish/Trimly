@@ -157,12 +157,12 @@ export default function RegisterPage() {
                       setFormData({ ...formData, password: e.target.value })
                     }
                     required
-                    minLength={6}
+                    minLength={8}
                     className="h-12 pl-10 text-base"
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Make it at least 6 characters long
+                  Must be at least 8 characters with uppercase, lowercase, and a number
                 </p>
               </div>
             </CardContent>

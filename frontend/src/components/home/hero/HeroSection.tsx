@@ -45,7 +45,7 @@ export function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
             <Scissors className="h-4 w-4 text-background" />
             <span className="text-sm font-semibold text-background uppercase tracking-wide">
-              Premium In-Home Service
+              Premium Barber Shop Service
             </span>
           </div>
 
@@ -53,12 +53,12 @@ export function HeroSection() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-background leading-[1.1] tracking-tight">
             Professional Barber
             <br />
-            <span className="text-brand-accent">At Your Doorstep</span>
+            <span className="text-brand-accent">Barber Shop</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-background/90 font-medium max-w-2xl leading-relaxed">
-            Book your appointment online. Our licensed barbers come to you for a
+            Book your appointment online. Visit our barber shop for a
             premium grooming experience.
           </p>
 

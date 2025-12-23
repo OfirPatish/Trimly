@@ -37,7 +37,7 @@ export function ServicesSection() {
             Our Services
           </h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto text-muted-foreground">
-            Professional grooming services delivered to your home. Choose from
+            Professional grooming services at our barber shop. Choose from
             our range of premium barber services.
           </p>
         </div>

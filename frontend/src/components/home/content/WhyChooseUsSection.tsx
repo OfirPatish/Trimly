@@ -38,7 +38,7 @@ const features = [
     icon: CheckCircle2,
     title: "Convenience",
     description:
-      "Skip the commute. Get professional barber service delivered right to your doorstep.",
+      "Visit our barber shop. Get professional barber service in a comfortable setting.",
   },
 ];
 
@@ -52,7 +52,7 @@ export function WhyChooseUsSection() {
             Why Choose Us
           </h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto text-muted-foreground">
-            Experience the difference of professional in-home barber service
+            Experience the difference of professional barber shop service
             with unmatched convenience and quality.
           </p>
         </div>

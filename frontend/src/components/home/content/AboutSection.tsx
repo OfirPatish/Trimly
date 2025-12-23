@@ -29,13 +29,13 @@ export function AboutSection() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-foreground">
                 Professional Barber
                 <br />
-                <span className="text-brand-accent">Service at Home</span>
+                <span className="text-brand-accent">Barber Shop</span>
               </h2>
             </div>
 
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-xl">
-              Experience premium grooming without leaving your home. Our
-              licensed barbers bring professional service directly to you,
+              Experience premium grooming at our barber shop. Our
+              licensed barbers provide professional service,
               ensuring convenience and quality in every appointment.
             </p>
 
@@ -64,7 +64,7 @@ export function AboutSection() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-lg">
               <Image
                 src="/images/about-barber.webp"
-                alt="Professional barber providing in-home service"
+                alt="Professional barber at barber shop"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

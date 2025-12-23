@@ -35,8 +35,8 @@ export function Footer() {
               <span>Trimly</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Professional in-home barber services. Book your appointment online
-              and experience premium grooming at your doorstep.
+              Professional barber shop services. Book your appointment online
+              and experience premium grooming at our shop.
             </p>
           </div>
 
