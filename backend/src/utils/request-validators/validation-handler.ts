@@ -12,7 +12,12 @@ export const handleValidationErrors = (
 ): void => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() });
+    // Return the first error message for consistency with error handler
+    const firstError = errors.array()[0];
+    res.status(400).json({
+      error: firstError.msg || "Validation failed",
+      errors: errors.array(), // Keep array for potential future use
+    });
     return;
   }
   next();

@@ -25,6 +25,7 @@ import {
   User,
   ArrowLeft,
   AlertCircle,
+  CheckCircle,
 } from "lucide-react";
 
 export default function RegisterPage() {
@@ -34,6 +35,7 @@ export default function RegisterPage() {
     name: "",
   });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const { register, user, loading: authLoading, loginLoading } = useAuthStore();
   const isAuthenticated = !!user;
   const loading = loginLoading;
@@ -52,6 +54,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     try {
       await register({
@@ -59,7 +62,11 @@ export default function RegisterPage() {
         password: formData.password,
         name: formData.name,
       });
-      router.push("/");
+      setSuccess("Account created successfully! Redirecting...");
+      // Small delay to show success message before redirect
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
     } catch (err) {
       const error = err as Error;
       setError(error.message || "Failed to register");
@@ -89,6 +96,12 @@ export default function RegisterPage() {
                 <Alert variant="destructive">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>{error}</AlertDescription>
+                </Alert>
+              )}
+              {success && (
+                <Alert variant="default" className="border-green-500/50 text-green-600 dark:text-green-400 [&>svg]:text-green-600 dark:[&>svg]:text-green-400">
+                  <CheckCircle className="h-4 w-4" />
+                  <AlertDescription>{success}</AlertDescription>
                 </Alert>
               )}
               <div className="space-y-2">

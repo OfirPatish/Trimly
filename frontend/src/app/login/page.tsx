@@ -19,12 +19,20 @@ import { Navbar } from "@/components/layout/Navbar";
 import { AuthGuard } from "@/components/layout/AuthGuard";
 import { Spinner } from "@/components/ui/spinner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Scissors, Mail, Lock, ArrowLeft, AlertCircle } from "lucide-react";
+import {
+  Scissors,
+  Mail,
+  Lock,
+  ArrowLeft,
+  AlertCircle,
+  CheckCircle,
+} from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [canRedirect, setCanRedirect] = useState(false);
   const { login, user, loading: authLoading, loginLoading } = useAuthStore();
   const isAuthenticated = !!user;
@@ -43,10 +51,12 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
     setCanRedirect(false);
 
     try {
       await login({ email, password });
+      setSuccess("Login successful! Redirecting...");
       // Store handles minimum duration, now allow redirect
       setCanRedirect(true);
     } catch (err) {
@@ -79,6 +89,15 @@ export default function LoginPage() {
                   <Alert variant="destructive">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>{error}</AlertDescription>
+                  </Alert>
+                )}
+                {success && (
+                  <Alert
+                    variant="default"
+                    className="border-green-500/50 text-green-600 dark:text-green-400 [&>svg]:text-green-600 dark:[&>svg]:text-green-400"
+                  >
+                    <CheckCircle className="h-4 w-4" />
+                    <AlertDescription>{success}</AlertDescription>
                   </Alert>
                 )}
                 <div className="space-y-2">

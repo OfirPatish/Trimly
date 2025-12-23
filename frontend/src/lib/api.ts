@@ -15,8 +15,14 @@ import type {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
 // Validate API URL in production
-if (typeof window !== "undefined" && API_URL.includes("localhost") && process.env.NODE_ENV === "production") {
-  console.error("ERROR: NEXT_PUBLIC_API_URL must be set to a production URL in production builds");
+if (
+  typeof window !== "undefined" &&
+  API_URL.includes("localhost") &&
+  process.env.NODE_ENV === "production"
+) {
+  console.error(
+    "ERROR: NEXT_PUBLIC_API_URL must be set to a production URL in production builds"
+  );
 }
 
 class ApiClient {
@@ -82,7 +88,20 @@ class ApiClient {
 
         try {
           const error = await response.json();
-          errorMessage = error.error || error.message || errorMessage;
+          // Handle validation errors (array format) or standard error format
+          if (
+            error.errors &&
+            Array.isArray(error.errors) &&
+            error.errors.length > 0
+          ) {
+            errorMessage =
+              error.errors[0].msg ||
+              error.error ||
+              error.message ||
+              errorMessage;
+          } else {
+            errorMessage = error.error || error.message || errorMessage;
+          }
         } catch {
           // If response is not JSON, use status-based messages
           if (response.status === 401) {
